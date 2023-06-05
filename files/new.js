@@ -238,6 +238,24 @@
 // console.log(mymodule.add())
 // console.log(mymodule.mul())
 
+// // TAKE AN INPUT FROM USER
+// // USING READLINE built in module
+// const readline = require("readline")
+// const input=readline.createInterface({
+//     input:process.stdin,
+//     output:process.stdout
+// })
+// input.question("enter num1",(num)=>{
+// console.log("number u enter is" ,num)
+  
+// })
+
+// // USING PROMPT-sync
+// const prompt =require("prompt-sync")();
+
+// const input1=prompt("enter num1 : ");
+// const input2=prompt("enter num2 : ");
+// console.log("sum",parseInt(input1) + parseInt(input2));
 
 
 
