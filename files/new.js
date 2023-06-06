@@ -257,6 +257,157 @@
 // const input2=prompt("enter num2 : ");
 // console.log("sum",parseInt(input1) + parseInt(input2));
 
+// // COMMAND-LINE ARGUMENT
+// const args = process.argv[0];
+// const args1 = process.argv[1];
+// const args2 = process.argv[2];
+// const args3 = process.argv.slice(0);
+// const args4 = process.argv.slice(1);
+// const args5 = process.argv.slice(2);
+// const args6 = process.argv.slice(3);
+
+// console.log("The first element (process.argv[0]) is the path to the Node.js executable:",args);
+// console.log("The second element (process.argv[1]) is the path to the executed script:",args1);
+// console.log("The remaining elements (process.argv[2] onwards) are the arguments passed by the user:",args2);
+// console.log("Slice is used to execute the text and the path to the Node.js executable:",args3);
+// console.log("Slice is used to execute the text the path to the executed script:",args4);
+// console.log("Slice is used to execute the text and the arguments passed by the user",args5);
+// console.log("Slice is used to execute from second argument ",args6)
+
+// // PROVIDE A MULTIPLE ARGUMENTS USING YARGS
+// const yargs = require("yargs");
+
+// const argv =yargs.option("name",{
+//     type:"string",
+//     description:"name of the person",
+//     demandOption:true
+// }).option("age",{
+//     type:"number",
+//     description:"age of the person",
+//     demandOption:true
+// }).option("city",{
+//     type:"string",
+//     description:"city of the person",
+//     demandOption:true
+// })
+// .help().argv;
+
+// console.log("name : ",argv.name);
+// console.log("age :",argv.age);
+// console.log("city :",argv.city);
+
+// FILE DIRECTORY
+// READFILE DIRECTORY
+
+// const fs = require("fs");
+// const dir = "./hei"
+// fs.readdir(dir,(err,files)=>{
+// if(err) throw err;
+// files.map(file=>{
+//     console.log(file);
+// })
+
+// })
+
+// // fetching api
+// fetch('https://jsonplaceholder.typicode.com/todos') 
+// .then(res=>res.json())
+// .then(json=>console.log(json))  
+
+
+// fetching specific file using map in json
+// const users = [{
+//     name:"karthik",
+//     age:"22"
+// },{
+//     name:"karthi",
+//     age:"22"
+// }];
+// users.map((user=>console.log(user.name)));
+
+
+// JSON 
+
+// const jsonString = '{"name": "John", "age": 30, "email": "john@example.com"}';
+
+// const jsonObject = JSON.parse(jsonString);
+// const string = JSON.stringify(jsonString);
+
+// console.log(jsonObject);
+// console.log(string);
+
+// const jsonObject = {
+//     name: 'John',
+//     age: 30,
+//     email: 'john@example.com'
+//   };
+  
+//   const jsonString = JSON.stringify(jsonObject);
+  
+//   console.log(jsonString);
+
+// HTTP SERVER AND CLIENT
+const http = require("http");
+
+http.createServer((req,res)=>{
+  res.writeHead(200,{
+    "Content-Type":"text/html"
+  })
+  res.write ("<h1>hello world</h1>");
+  console.log(req.url)
+  res.write(req.url)
+  res.end();
+}).listen(8080,(err)=>{
+  if(err) throw err;
+  console.log("server is running")
+})
+// const http = require('http');
+
+// const options = {
+//   hostname: 'www.example.com',
+//   port: 80,
+//   path: '/',
+//   method: 'GET'
+// };
+
+// const req = http.request(options, (res) => {
+//   console.log(`Status code: ${res.statusCode}`);
+//   console.log('Response headers:', res.headers);
+
+//   let responseBody = '';
+//   res.on('data', (chunk) => {
+//     responseBody += chunk;
+//   });
+
+//   res.on('end', () => {
+//     console.log('Response body:', responseBody);
+//   });
+// });
+
+// req.on('error', (error) => {
+//   console.error('Error:', error);
+// });
+
+// req.end();
+
+const options = {
+  hostname: 'www.google.com',
+  port:80,
+  path: '/',
+  method: 'POST'
+}
+const req =http.request(options,(res)=>{
+  console.log(res);
+});
+req.on("response",(res)=>{
+  console.log(res);
+})
+req.on("error",(err)=>{
+  console.log(err);
+})
+req.end();
+  
+
 
 
 
