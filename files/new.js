@@ -1,5 +1,5 @@
 
-// // BUFFER MODULE
+// // NODEJS MODULES : BUFFER MODULE
 // const buffer = new Buffer.from('karthik');
 // const buf = new Buffer.alloc(8);
 
@@ -342,78 +342,171 @@
 //     email: 'john@example.com'
 //   };
   
-//   const jsonString = JSON.stringify(jsonObject);
-  
+//   const jsonString = JSON.stringify(jsonObject); 
 //   console.log(jsonString);
 
 // HTTP SERVER AND CLIENT
-const http = require("http");
 
-http.createServer((req,res)=>{
-  res.writeHead(200,{
-    "Content-Type":"text/html"
-  })
-  res.write ("<h1>hello world</h1>");
-  console.log(req.url)
-  res.write(req.url)
-  res.end();
-}).listen(8080,(err)=>{
-  if(err) throw err;
-  console.log("server is running")
-})
+// const http = require("http");
+
+// http.createServer((req,res)=>{
+//   res.writeHead(200,{
+//     "Content-Type":"text/html"
+//   })
+//   res.write ("<h1>hello world</h1>");
+//   console.log(req.url)
+//   res.write(req.url)
+//   res.end();
+// }).listen(8080,(err)=>{
+//   if(err) throw err;
+//   console.log("server is running")
+// })
+
+// HTTP CLIENT
+// const http = require("http");
+// const options = {
+//   hostname:"localhost",
+//   pathname:'/',
+//   port:8080,
+//   method:"GET"
+// }
+// const req = http.request(options,(res)=>{
+//   console.log("req successed")
+//   console.log(`status code :${res.statusCode}`);
+
+// })
+// req.on("err",(err)=>{
+//   if(err) throw err;
+// })
+// req.end();
+
+// SETTING CUSTOM HEADERS
+// const options = {
+//   hostname:"www.google.com",
+//   pathname:"/user",
+//   method:"GET",
+//   port:"8080",
+//   headers:{
+//     "Content-Type" : "application/json",
+//     "Authorization" : "Bearer token123"
+//   }
+// };
+// const req= http.request(options,(res)=>{
+//   console.log(`Status code: ${res.statusCode}`);
+//   console.log("header",res.headers);
+// })
+// req.on("error",(err)=>{
+//  if(err) throw err;
+// })
+// req.end();
+
+// // HTTP CLIENT AND SERVER  USING GET METHOD
+// // TO UNDERSTAND THIS SECTION WE HAVE TO CREATE TWO FILES LIKE :
+// // SERVER.JS
+// // CLIENT.JS
+
+// // SERVER.JS
+// const http = require("http");
+
+// const server = http.createServer((req,res)=>{
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.write("Response from Server")
+//   res.end();
+// })
+// server.listen(8080,(err)=>{
+//   if(err) throw err;
+//   console.log("Server Running");
+// });
+
+// // CLIENT.JS
 // const http = require('http');
 
 // const options = {
-//   hostname: 'www.example.com',
-//   port: 80,
-//   path: '/',
-//   method: 'GET'
-// };
+//     hostname:'localhost',
+//     pathname:'/',
+//     port:8000,
+//     metod:'GET'
+// }
 
-// const req = http.request(options, (res) => {
-//   console.log(`Status code: ${res.statusCode}`);
-//   console.log('Response headers:', res.headers);
+// const req = http.request(options,(res)=>{
+//     let body = '';
+//     res.on("data",(chunk)=>{
+//       body += chunk;
+//     })
+//     res.on("end",()=>{
+//         console.log("response is : ",body);
 
-//   let responseBody = '';
-//   res.on('data', (chunk) => {
-//     responseBody += chunk;
-//   });
+//     })
 
-//   res.on('end', () => {
-//     console.log('Response body:', responseBody);
-//   });
-// });
-
-// req.on('error', (error) => {
-//   console.error('Error:', error);
-// });
-
+// })
+// req.on("error" ,(err)=>{
+//     console.err(err);
+// })
 // req.end();
 
-const options = {
-  hostname: 'www.google.com',
-  port:80,
-  path: '/',
-  method: 'POST'
-}
-const req =http.request(options,(res)=>{
-  console.log(res);
-});
-req.on("response",(res)=>{
-  console.log(res);
-})
-req.on("error",(err)=>{
-  console.log(err);
-})
-req.end();
-  
+// // HTTP CLIENT AND SERVER  USING POST METHOD
+// // server.js
 
+// const http = require("http");
 
+// http.createServer((req,res)=>{
+//     if (req.method === 'POST' &&  req.url === '/user'){
+//         let body = '';
+//         req.on("data", (chunk)=>{
+//             body += chunk;
+//         });
+//         req.on('end',()=>{
+//             const userInfo = JSON.parse(body);
+//             console.log("userdata : ", userInfo);
+    
+//         res.statusCode=200;
+//         res.setHeader('Content-Type','text/plain')
+//         res.write("data received")
+//         res.end("user data received");
+//             });
+//     }
 
+//    else{
+//     res.statusCode=404;
+//     res.setHeader('Content-Type','text/plain')
+//     res.end("invalid point");
+// }
 
+   
+// }).listen(8000,(err)=>{
+//     if(err) throw err;
+//     console.log("Server Running")
+// })
 
+// // CLIENT.JS
+// const http = require('http');
 
+// const options = {
+//     hostname:'localhost',
+//     path:'/user',
+//     port:8000,
+//     method:'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//       }
+// }
 
+// const userInfo = {
+//     name:"kartik",
+//     age:21
+// }
 
-
-
+// const req = http.request(options,(res)=>{
+//     let body = '';
+//     res.on('data',(chunk)=>{
+//      body += chunk;
+//     });
+//     res.on('end',()=>{
+//         console.log("data : " , body)
+//     });
+//     res.on('error',(err)=>{
+//         console.log(err);
+//     })
+// })
+// req.write(JSON.stringify(userInfo));
+// req.end();
