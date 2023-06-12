@@ -34,7 +34,7 @@
 // http.createServer((req,res)=>{
 //     res.writeHead(200, {'Content-Type': 'text/html'});
 //     res.write("file System");
-//     fs.readFile("index1.html",function(err,data){
+//     fs.readFile("index.html",function(err,data){
 //         res.writeHead(200, {'Content-Type': 'text/html'});
 //         if(err) throw err;
 //         res.write(data);
@@ -53,7 +53,7 @@
 // http.createServer((req,res)=>{
 //     res.writeHead(200, {'Content-Type': 'text/html'});
 //     res.write("file System");
-//     fs.appendFile("index1.txt","hello",function(err,data){
+//     fs.appendFile("index.txt","hello",function(err,data){
 //         res.writeHead(200, {'Content-Type': 'text/html'});
 //         if(err) throw err;
 //         res.write(data);
@@ -71,7 +71,7 @@
 // http.createServer((req,res)=>{
 //     res.writeHead(200, {'Content-Type': 'text/html'});
 //     res.write("file System");
-//     fs.unlink("index1.txt",function(err,data){
+//     fs.unlink("index.txt",function(err,data){
 //         res.writeHead(200, {'Content-Type': 'text/html'});
 //         if(err) throw err;
 //         res.write(data);
@@ -89,7 +89,7 @@
 // http.createServer((req,res)=>{
 //     res.writeHead(200, {'Content-Type': 'text/html'});
 //     res.write("file System");
-//     fs.writeFle("index1.txt","replace",function(err,data){
+//     fs.writeFle("index.txt","replace",function(err,data){
 //         res.writeHead(200, {'Content-Type': 'text/html'});
 //         if(err) throw err;
 //         res.write(data);
@@ -130,7 +130,7 @@
 // exact=path.isAbsolute("C:/Users/karan/nodejs/test/index.html");
 
 // let joinpath = "test"
-// join = path.join("C:","/Users/karan/nodejs",joinpath,"index1.html")
+// join = path.join("C:","/Users/karan/nodejs",joinpath,"index.html")
 
 // parse=path.parse("test/index.html");
 // exactpath = path.resolve("test/index.html");
@@ -168,7 +168,7 @@
 
 // const readFileAsync = util.promisify(fs.readFile);
 // console.log("promisify :");
-// readFileAsync("index1.html",'utf-8')
+// readFileAsync("index.html",'utf-8')
 // .then(data=>console.log(data))
 // .catch(err=>console.log(err))
 
@@ -510,3 +510,440 @@
 // })
 // req.write(JSON.stringify(userInfo));
 // req.end();
+
+// // SENDING AND RECEIVING EVENTS USING EVENT-EMITTERS
+// const EventEmitters = require("events");
+
+// // create an instance of the EventEmitter class
+// const myemitter = new EventEmitters();
+
+// // Register an event listener
+// myemitter.on('greet',(name)=>{
+//     console.log(`hello ${name}`);
+// });
+// myemitter.on('farewell',()=>{
+//     console.log("goodbye")
+// });
+
+// // emitting an event 
+// myemitter.emit('greet' , 'karthik');
+// myemitter.emit('farewell');
+
+
+// // EXPRESS FRAMEWORK
+
+// const express = require('express');
+// const app = express();
+
+// app.use(express.json());
+
+// app.get('/users',(req,res)=>{
+//     res.send("hello !, from express")
+// });
+
+
+// app.get('/users/:id',(req,res)=>{
+//     let userId = req.params.id;
+//     res.send(`userid : ${userId}`);
+// })
+// app.post('/users',(req,res)=>{
+//   const user = req.body.name;
+//   console.log("data recceived",user);
+//   res.send(`response received ${user}`)
+// })
+
+// // Serve static files from the 'public' directory
+// app.use(express.static('public'));
+
+
+// app.delete('/users/:name',(req, res) => {
+//     const username = req.body.name; // Access the resource identifier from the URL
+//     // Delete the user with the provided ID or perform the desired action
+//     // e.g., remove user from a database
+//     console.log(`Deleting user with ID ${username}`);
+//     res.send(`User with ID ${username} deleted successfully`);
+//   });
+
+// // Route handler for the '/users/:id' URL with 'PUT' method
+// app.put('/users/:id', (req, res) => {
+//     const userId = req.params.id; // Access the resource identifier from the URL
+//     const updatedUser = req.body; // Access the data sent in the request body
+//     // Update the user with the provided ID using the updatedUser data
+//     // e.g., update user details in a database
+//     console.log(`Updating user with ID ${userId}`);
+//     console.log('Updated user:', updatedUser);
+//     res.send(`User with ID ${userId} updated successfully`);
+//   });
+
+
+// app.listen(3000,(err)=>{
+//     if(err) throw err;
+//     console.log("server running")
+// })
+
+
+// // CALL STACK
+// function mul(a,b) 
+// {return a*b};
+// function add(a,b){
+//   const sum = mul(a,b);
+//   const adder= a+b+sum;
+//   console.log("addition",adder)
+// }
+// function calc(){
+//   return  add(2,3);
+  
+// }
+// calc()
+
+// const prompt = require('prompt-sync')();
+// const grandfather = (name)=>{ return name};
+// const father= (name)=>{
+// let names = grandfather(prompt("enter grandfather name"));
+// return (`my grandfather name ${names} and my father name is ${name}`);
+//  }
+//  const son =()=> {let fathername = father(prompt("enter father name"));
+//  console.log(fathername);
+// }
+// son()
+
+// const nation = (name)=>{
+//   return name;
+// }
+// const state = (name)=>{
+//   const national =  nation(prompt("enter ur nation"));
+//   return `State ${name} nation is ${national}`;
+// }
+// const dis =(name)=>{
+//   const det = state(prompt("enter name of state"))
+//   return `my dis is ${name} ${det}`;   
+// }
+// const main = ()=>{const all = dis(prompt("enteer dis"));
+// console.log(all)
+
+// }
+// main();
+
+// // CALLBACKS
+// function call(callback){
+//   setTimeout(()=>{
+//     const data = "hey hello";
+//     callback(data);
+//   },2000);
+// }
+//  function passing(data){
+//     console.log("processing" ,data)
+//  }
+//  function pro(){
+//   console.log("hei")
+//  }
+// call(passing);
+// pro();
+
+// function fetchData(callback) {
+//   // Simulating an asynchronous operation
+//   setTimeout(() => {
+//     const data = "Some fetched data";
+//     callback(data);
+//   }, 2000);
+// }
+
+// function processData(data) {
+//   console.log("Processing data:", data);
+// }
+
+// fetchData(processData);
+
+// CALLBACK ABSTRACTION
+
+// function addAsync(a,b,callback){
+//   const add = a + b;
+//   callback(add);
+// }
+
+// function hof(a,b,operator,callback){
+//   if(operator === "add")
+//   addAsync(a,b,callback)
+// }
+// hof(5,5,"add",(add)=>{
+//   console.log("addition", add)
+// })
+
+// // CALLBACK CHAINING
+// const timer1 = (callback)=>{
+//   setTimeout(()=>{
+//     console.log("timer1")
+//     callback();
+//   })
+// }
+// const timer2 = (callback)=>{
+//   setTimeout(()=>{
+//     console.log("timer2");
+//     callback()
+//   })
+// }
+
+// const time = ()=>{
+//   console.log("time3");
+// }
+
+// timer1(()=>{
+//   timer2(()=>{
+//     time()
+//   });
+// });
+
+// // CALLBACKqUEUE
+// const add = (a,b,callback)=>{
+//  const adder = a+b;
+//  callback(adder);
+// };
+// const cal=(a,b,callback)=>{
+//  add(a,b,callback);
+// }
+
+// cal(5,5,(adder)=>{
+//   console.log(adder)
+// });
+// cal(6,7,(adder)=>{
+//   console.log(adder)
+// });
+
+// function call(a,callback){
+//   const b = a*a;
+//   console.log('called',b);
+//   callback(b);
+// }
+// function calling(a,callback){
+//   const c = a*4
+//   call(c,callback)
+// }
+// calling(5,(b)=>{
+//   console.log("calling",b)
+// })
+
+// function add(a,b){
+//   return `Addition ${a+b}`;
+// }
+// function sub(a,b){
+//   return `substract ${a-b}`;
+// }
+
+// function total(a,b){
+//   const adder = add(a,b);
+//   const subr = sub(a,b);
+//   return `${adder},${subr}`;
+// };
+// function sin(a,b){
+//   const as =total(a,b)
+//   console.log("result : ",as)
+// }
+// sin(2,3)
+
+
+// console.log("start");
+// function add(){
+//   console.log(5*5);
+// }
+// function sub(){
+  
+//     console.log(5-5);
+
+
+ 
+// }
+// function time(){
+//     setImmediate(()=>{
+//       console.log("immadiate")
+//     })
+// }
+
+// add(()=>{
+//  sub(()=>{
+//   time();
+//  })
+// })
+
+
+// function stepOne(a,callback) {
+//   setTimeout(() => {
+//     console.log("Step One", a*a);
+//     callback();
+//   }, 2000);
+// }
+
+// function stepTwo(callback) {
+//   setImmediate(() => {
+//     console.log("Step Two");
+//     callback();
+//   });
+// }
+
+// function stepThree() {
+//   console.log("Step Three");
+// }
+
+// stepOne(5,() => {
+//   stepThree(() => {
+//     stepTwo();
+//   });
+// });
+
+// function promiseexample(){
+//   return new Promise((resolve,reject)=>{
+    
+//       let a = 3;
+//       let b = 2;
+//       const c = a+b;
+//       resolve(c);
+     
+//   })
+// }
+// promiseexample().then((data)=>{
+//   console.log(data);
+// })
+// .catch((err)=>{
+//   console.log(err);
+// })
+// const prompt = require("prompt-sync")();
+// function prom(){
+//   return new Promise((resolve,reject)=>{
+//     const one = prompt("enter one");
+//     const two = prompt("enter two");
+//     if (one !== 0){
+//      resolve(parseInt(one) + parseInt(two));
+//     }
+//     else{
+//       reject(error)
+//     }
+//   })
+// }
+
+// prom().then((data)=>console.log(data))
+// .catch((err)=>console.log(err));
+
+
+// // promise Chaining
+// function add(a,b){
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//       resolve(a+b);
+//      },2000);
+//   })
+// }
+// function sub(c,d){
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//       resolve(c-d);
+//      },2000);
+//   })
+// }
+
+// sub(2,3).then((data)=>{
+//   console.log(data);
+//   return add(3,3);
+// })
+// .then((res)=>{ 
+//   console.log(res)
+// })
+
+// .catch((err)=>console.log(err));
+
+
+// const request = require("request");
+
+// request.get("https://jsonplaceholder.typicode.com/comments/id",(error,response,body)=>{
+//   if (error){
+//     console.log(error);
+//   }
+//   else{
+//     // console.log("response", response);
+//     console.log(body);
+//   }
+// })
+// const options = {
+//   url : 'http://localhost:3000/submit',
+//   method:'POST',
+//   json:{
+//     name:'karthik',
+//     email:'karanamkarthi5@gmail.com',
+//   },
+// };
+// request(options,(error,response,body)=>{
+//   if (error) {
+//     console.error('Error:', error);
+//   } else{
+//   console.log("response code : ",response.statusCode);
+//   // response.send("received")
+//   console.log("body",body)
+//   }
+// })
+
+// function add(a,b,callback){
+//   const c = a+b;
+  
+//   callback(c);
+// }
+// function hof(a,b,callback){
+//   add(a,b,callback);
+// }
+// hof(2,3,(result)=>{
+//   console.log("result" ,result);
+// })
+
+// function add(a,b,callback){
+//   const c = a+b;
+//   console.log(c);
+//   callback();
+// }
+// function sum(a,b,callback){
+//   const d = a-b;
+//   console.log(d);
+
+// }
+
+// add(2,3,()=>{
+//   sum(2,2);
+// })
+
+// function prom(a,b){
+//   return new Promise((resolve,reject)=>{
+//     const c = a+b;
+//     resolve(c);
+//   })
+// }
+
+// function prom1(a,b){
+//   return new Promise((resolve,reject)=>{
+//     const c = a-b;
+//     resolve(c);
+//   })
+// }
+// prom(2,3).then((result)=>{
+//   console.log(result);
+//   return prom1(4,3);
+// }).then((data)=>{
+//  console.log(data)
+// })
+
+
+// const mongoclient = require('mongodb').MongoClient;
+// const url = "mongodb+srv://kk5:kk5@cluster0.mk5ojw1.mongodb.net/mydb"
+
+// mongoclient.connect(url,(err,db)=>{
+//   if (err) throw err;
+//   console.log("created  DB");
+//   db.close();
+// })
+
+
+const mongoose = require('mongoose');
+const url = "mongodb+srv://kk5:kk5@cluster0.mk5ojw1.mongodb.net"
+
+mongoose.connect(url)
+.then(()=>{
+  console.log("connected");
+})
+.then((err)=>{
+  console.log(err);
+})
