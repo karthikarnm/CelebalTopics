@@ -1,0 +1,12 @@
+2023/06/07 17:57:52 [error] 14788#9880: *1 CreateFile() "C:\Users\karan\celebal\niginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/06/07 18:26:18 [notice] 17436#17252: signal process started
+2023/06/07 18:28:18 [notice] 3416#14956: signal process started
+2023/06/07 18:28:18 [error] 3416#14956: CreateFile() "C:\Users\karan\celebal\niginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2023/06/07 18:28:24 [notice] 16584#17504: signal process started
+2023/06/07 18:28:24 [error] 16584#17504: CreateFile() "C:\Users\karan\celebal\niginx/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2023/06/07 18:33:17 [notice] 6900#17392: signal process started
+2023/06/07 18:36:03 [notice] 228#15020: signal process started
+2023/06/07 18:36:40 [notice] 13196#5696: signal process started
+2023/06/07 18:59:19 [notice] 2220#15680: signal process started
+2023/06/08 17:15:20 [notice] 18612#18884: signal process started
+2023/06/08 17:32:46 [notice] 16256#19016: signal process started
