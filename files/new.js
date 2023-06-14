@@ -927,23 +927,69 @@
 // })
 
 
-// const mongoclient = require('mongodb').MongoClient;
-// const url = "mongodb+srv://kk5:kk5@cluster0.mk5ojw1.mongodb.net/mydb"
+// const mongoose = require("mongoose");
+// const url = "mongodb+srv://karanamkarthi5:kk5@testing.g2bgesg.mongodb.net/?retryWrites=true&w=majority"
 
-// mongoclient.connect(url,(err,db)=>{
-//   if (err) throw err;
-//   console.log("created  DB");
-//   db.close();
+// mongoose.connect(url)
+// .then(()=>{
+//   console.log("working")
+//   console.log(url);
 // })
+// .catch((err)=>{
+//   console.log(err)
+// })
+// const prompt = require("prompt-sync")();
+// const {MongoClient} = require('mongodb');
+// const url1 = "mongodb+srv://karanamkarthi5:kk5@testing.g2bgesg.mongodb.net/dbs";
+
+// const client = new MongoClient(url1);
+// var db = "mydb"
+// async function main(){
+//   await client.connect();
+//   console.log("Connected ")
+//   const dbo = client.db("mydb");
+//   const collection = dbo.collection("testing");
+//  await dbo.createCollection("testing 2");
+//  console.log("collections created")
+  // var obj = {
+  //   name :prompt("enter name"),
+  //   age :prompt("enter age")
+  // } 
+  
+  // const insert = await collection.insertOne(obj);
+  // console.log("inserted",insert);
+  // const find = await collection.find({}).toArray();
+  // console.log("All Documents",find)
+  // const findE = await collection.find({name:'karthik karanam'}).toArray();
+  // console.log("specific Documents",findE) 
+  // const Update = await collection.updateOne({name: prompt("enter old name")},{$set:{name:prompt("enter new name")}})
+  // console.log("updated",Update)
+  // const delet = collection.deleteMany({name:'karthik karanam'});
+  // console.log("deleted",delet)
+// }
+ 
+
+// main()
+// .catch(console.error);
 
 
-const mongoose = require('mongoose');
-const url = "mongodb+srv://kk5:kk5@cluster0.mk5ojw1.mongodb.net"
+const sgmail = require('@sendgrid/mail');
+ sgmail.setApiKey('09c987a2a728451d9d2a23fcb0ab5c40')
 
-mongoose.connect(url)
-.then(()=>{
-  console.log("connected");
+const msg = {
+  from :"karanamkarthik9@gmail.com",
+  to : "karanamkarthi5@gmail.com",
+  subject : "TESTING ...",
+  text : "just for testing purpose"
+};
+sgmail.send(msg).then(()=>{
+  console.log("emailSent")
 })
 .then((err)=>{
-  console.log(err);
+  console.log(err)
 })
+
+
+
+
+
