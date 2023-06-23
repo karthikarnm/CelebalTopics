@@ -3,6 +3,8 @@
 // const buffer = new Buffer.from('karthik');
 // const buf = new Buffer.alloc(8);
 
+
+
 // buffer.write("hai")
 // buf.write("hello")
 
@@ -165,7 +167,7 @@
 // // INSPECT 
 // let obj= {name:"karthik",num:41}
 // console.log("inspect module :",util.inspect(obj))
-
+// //PR0MISIFY
 // const readFileAsync = util.promisify(fs.readFile);
 // console.log("promisify :");
 // readFileAsync("index.html",'utf-8')
@@ -179,6 +181,65 @@
 // }
 // process.env.DEBUG = 'hsi';
 // console.log(de())
+
+// // URL MODULE
+
+// // In Node.js, the url module is a built-in module that provides 
+// // utilities for parsing and formatting URLs (Uniform Resource Locators).
+// //  It offers a set of functions and classes that make it easier to work with URLs in your Node.js applications.
+
+// // Certainly! Here are some examples demonstrating the usage of the url module in Node.js:
+
+// // URL Parsing
+// const url = require('url');
+
+// const urlString = 'https://www.example.com:8080/path?param1=value1&param2=value2';
+// const parsedUrl = url.parse(urlString, true);
+
+// console.log(parsedUrl.protocol); // Output: 'https:'
+// console.log(parsedUrl.host); // Output: 'www.example.com:8080'
+// console.log(parsedUrl.pathname); // Output: '/path'
+// console.log(parsedUrl.query); // Output: { param1: 'value1', param2: 'value2' }
+
+// // URL Formatting:
+// const url = require('url');
+
+// const urlObject = {
+//   protocol: 'https:',
+//   host: 'www.example.com',
+//   pathname: '/path',
+//   query: { param1: 'value1', param2: 'value2' }
+// };
+
+// const formattedUrl = url.format(urlObject);
+// console.log(formattedUrl); // Output: 'https://www.example.com/path?param1=value1&param2=value2'
+
+
+// // URL Encoding and Decoding:
+// const url = require('url');
+
+// const encodedUrl = 'https%3A%2F%2Fwww.example.com%2Fpath%2Ffile.html';
+// const decodedUrl = url.unescape(encodedUrl);
+
+// console.log(decodedUrl); // Output: 'https://www.example.com/path/file.html'
+
+// // URL Validation:
+// const url = require('url');
+
+// const validUrl = 'https://www.example.com';
+// const invalidUrl = 'example.com';
+
+// console.log(url.isValid(validUrl)); // Output: true
+// console.log(url.isValid(invalidUrl)); // Output: false
+
+// // URL Resolving:
+// const url = require('url');
+
+// const baseUrl = 'https://www.example.com/path/';
+// const relativeUrl = '../file.html';
+
+// const resolvedUrl = url.resolve(baseUrl, relativeUrl);
+// console.log(resolvedUrl); // Output: 'https://www.example.com/file.html'
 
 // // CREATING MY OWNMODULE
 // const mymodule = require("./mymodule");
@@ -654,7 +715,7 @@
 
 // fetchData(processData);
 
-// CALLBACK ABSTRACTION
+// // CALLBACK ABSTRACTION
 
 // function addAsync(a,b,callback){
 //   const add = a + b;
@@ -665,8 +726,8 @@
 //   if(operator === "add")
 //   addAsync(a,b,callback)
 // }
-// hof(5,5,"add",(add)=>{
-//   console.log("addition", add)
+// hof(5,5,"add",(data)=>{
+//   console.log("addition", data)
 // })
 
 // // CALLBACK CHAINING
@@ -912,7 +973,7 @@
 //     resolve(c);
 //   })
 // }
-
+// // promise chaining
 // function prom1(a,b){
 //   return new Promise((resolve,reject)=>{
 //     const c = a-b;
@@ -972,24 +1033,164 @@
 // main()
 // .catch(console.error);
 
+// // SEND GRID TO SEND EMAILS
+// const sgmail = require('@sendgrid/mail');
+//  sgmail.setApiKey('09c987a2a728451d9d2a23fcb0ab5c40')
 
-const sgmail = require('@sendgrid/mail');
- sgmail.setApiKey('09c987a2a728451d9d2a23fcb0ab5c40')
-
-const msg = {
-  from :"karanamkarthik9@gmail.com",
-  to : "karanamkarthi5@gmail.com",
-  subject : "TESTING ...",
-  text : "just for testing purpose"
-};
-sgmail.send(msg).then(()=>{
-  console.log("emailSent")
-})
-.then((err)=>{
-  console.log(err)
-})
-
-
+// const msg = {
+//   from :"karanamkarthik9@gmail.com",
+//   to : "karanamkarthi5@gmail.com",
+//   subject : "TESTING ...",
+//   text : "just for testing purpose"
+// };
+// sgmail.send(msg).then(()=>{
+//   console.log("emailSent")
+// })
+// .then((err)=>{
+//   console.log(err)
+// })
 
 
+// // 45. ES6 variables
+// //let , const 
+
+// ES6 introduced two new ways of declaring variables: let and const.
+
+// let:
+
+// Variables declared with let can be reassigned a new value.
+// They have block scope, meaning they are only accessible within the block where they are defined.
+// They are not hoisted to the top of their scope.
+// Example:
+// javascript
+// Copy code
+// let x = 5;
+// x = 10;
+// console.log(x); // Output: 10
+// const:
+
+// Variables declared with const are read-only and cannot be reassigned a new value once initialized.
+// They also have block scope.
+// They are not hoisted to the top of their scope.
+// They require an initialization when declared.
+// Example:
+// javascript
+// Copy code
+// const PI = 3.14;
+// console.log(PI); // Output: 3.14
+
+// PI = 3.14159; // Error: Assignment to constant variable
+
+// if (true) {
+//   const name = 'John';
+//   console.log(name); // Output: John
+// }
+// console.log(name); // Error: name is not defined
+
+
+// if (true) {
+//   let y = 20;
+//   console.log(y); // Output: 20
+// }
+// console.log(y); // Error: y is not defined
+
+
+
+// // Traditional function expression
+// function add(a, b) {
+//   return a + b;
+// }
+
+// // Arrow function
+// const add = (a, b) => a + b;
+
+// //Default Parameters:
+// function greet(name = 'Guest') {
+//   console.log(`Hello, ${name}!`);
+// }
+
+// greet(); // Output: Hello, Guest!
+// greet('John'); // Output: Hello, John!
+
+// ); // Output: Hello, John!
+
+// //Rest Parameters:
+
+// function fun(...numbers){
+//   return  numbers.reduce((total,num)=>total+num /2);
+// }
+// console.log(fun(2,3,4,5));
+// console.log(fun(2,3,4,56,6,7,8,8))
+// function names(name){
+//   console.log("hello ",name);
+// }
+// names("karthik")
+
+// // Destructuring Parameters:
+// const func = (name , age , ...rest)=>{
+//   console.log(`name:${name}`);
+//   console.log(`age:${age}`)
+//   console.log(`restobj:${rest}`)
+// }
+
+// func("karthik","22","uddehal","bomanahal")
+
+// //SEQUENTIAL EXECUTI0N 
+
+// async function add(a,b){
+//   return new Promise((resolve,reject)=>{
+//     if (a)
+//     setTimeout(() => {
+//       const c = a+b;
+//       console.log("addition",c);
+//       resolve(c);
+//     }, 2000);
+//     else{
+//       reject(error);
+//     }
+//   })
+// }
+
+// async function cal(){
+//   const cal1 = await add(2,3);
+//   const call2 = await add(cal1,55);
+//   console.log("all completed")
+
+// }
+// cal()
+
+
+// // PARALLEL WXECUTION IN ASYNC AND AWAIT 
+
+// async function add(a,b){
+//   return new Promise((resolve,reject)=>{
+//     if (a)
+//     setTimeout(() => {
+//       const c = a+b;
+//       console.log("addition",c);
+//       resolve(c);
+//     }, 2000);
+//     else{
+//       reject(error);
+//     }
+//   })
+// }
+
+// async function cal(){
+
+// const [d1,d2] = await Promise.all([add(2,3),add(22,44)]);
+// console.log("all are completed")
+// }
+// cal()
+
+
+
+// const querystring = require('querystring');
+
+// const user = {
+//   name:"karthik",
+//   age:"22"
+// }
+// const query = querystring.stringify(user);
+// console.log(query)
 
